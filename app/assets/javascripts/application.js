@@ -22,6 +22,8 @@
 /* global $*/
 $(document).on('turbolinks:load', function(){
  	$('.bxslider').bxSlider({
+ 		touchEnabled: true,
+ 		oneToOneTouch: true,
 		auto: true,
 		minslides: 3
 	});
