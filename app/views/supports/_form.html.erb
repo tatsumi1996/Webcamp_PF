@@ -1,0 +1,21 @@
+<div class="error_message">
+<% if @support.errors.any? %>
+  <%= @Support.errors.count %>件のerrorが発生しました
+  <% @support.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+</div>
+<%= form_with model:support,local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "タイトル"%>
+    <%= f.text_field :title, placeholder: "タイトルを入力してください", class: 'form-control support_title' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :opinion, "応援コメント" %>
+    <%= f.text_area :body, placeholder: "本文を入力してください",class: 'form-control support_body' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "応援を投稿", class: 'btn btn-success' %>
+  </div>
+<% end %>
