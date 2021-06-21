@@ -1,8 +1,11 @@
 class SupportsController < ApplicationController
-  
+
   def index
     @supports = Support.all
     @support = Support.new
+    if params[:tag_name]
+      @supports = Support.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def create
@@ -15,7 +18,7 @@ class SupportsController < ApplicationController
       render 'index'
     end
   end
-  
+
   def show
     @support_new = Support.new
     @support = Support.find(params[:id])
@@ -23,7 +26,7 @@ class SupportsController < ApplicationController
     @comment = Comment.new
     @comments = @support.comments
   end
-  
+
   def edit
     @support = Support.find(params[:id])
   end
@@ -46,7 +49,7 @@ class SupportsController < ApplicationController
   private
 
   def support_params
-    params[:support].permit(:title, :body)
+    params[:support].permit(:title, :body, :tag_list)
   end
-  
+
 end

@@ -21,4 +21,8 @@ class User < ApplicationRecord
     return name[self.is_deleted]
   end
   
+  def already_liked?(support)
+    self.likes.exists?(support_id: support.id)
+  end
+  
 end

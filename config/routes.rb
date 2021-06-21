@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -16,6 +17,7 @@ devise_for :users, controllers: {
   patch '/users/:id/out' => 'users#out', as: 'users_out'
   
   resources :supports, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :likes, only: [:create, :destroy]
       resource :comments, only: [:create, :destroy]
   end
   
