@@ -1,11 +1,12 @@
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th></th>
+      <th>ユーザー</th>
+      <th>マイ球団</th>
       <th>タイトル</th>
       <th>応援コメント</th>
       <th>タグ</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
   <tbody>
@@ -13,10 +14,12 @@
       <tr>
         <td><%= link_to user_path(support.user) do %>
           <%= attachment_image_tag(support.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-          <% end %>
+        </td>
+        <td><%= attachment_image_tag(support.user.favorite_team, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
+        <% end %>
         </td>
         <td><%= link_to support.title, support_path(support), class: "support_#{support.id}" %></td>
-        <td><%= support.body %></td>
+        <td><%= simple_format support.body %></td>
         <td><%= render 'supports/tag_list', tag_list: support.tag_list %></td>
         <td>
           <% if current_user.already_liked?(support) %>

@@ -9,6 +9,15 @@
     <div class='col-md-8 offset-md-1'>
       <h2 class="head-line title_h2 text-center">応援投稿詳細</h2>
   		<table class='table'>
+  		  <thead>
+          <tr>
+            </th></th>
+            <th>投稿ユーザー</th>
+            <th>タイトル</th>
+            <th>応援コメント</th>
+            <th colspan="7"></th>
+          </tr>
+        </thead>
   		  <tr>
   		    <td><%= link_to user_path(@support.user) do %>
             <%= attachment_image_tag(@support.user, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %><br>
@@ -16,7 +25,7 @@
             <% end %>
           </td>
           <td><%= link_to @support.title, support_path(@support) %></td>
-
+          <td><%= simple_format @support.body %></td>
           <td>
           <% if current_user.already_liked?(@support) %>
               <%= link_to support_likes_path(@support), method: :delete do %>
@@ -31,7 +40,6 @@
           </td>
 
           <td><p>コメント数：<%= @support.comments.count %></p></td>
-          <td><%= @support.body %></td>
               <% if @support.user == current_user %>
           <td><%= link_to '投稿を編集', edit_support_path(@support), class: "btn btn-sm btn-info edit_support_#{@support.id}" %></td>
           <td><%= link_to '投稿を削除', support_path(@support), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_support_#{@support.id}"%></td>

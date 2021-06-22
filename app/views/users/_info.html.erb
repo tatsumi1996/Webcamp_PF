@@ -1,12 +1,19 @@
 <table class='table'>
-  <tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
   <tr>
-	  <th>ニックネーム</th>
-	  <th><%= user.nickname %></th>
+  <th><p>プロフィール画像</p></th>
+  <th><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %></th>
   </tr>
   <tr>
-	  <th>自己紹介文</th>
-	  <th><%= user.introduction %></th>
+  <th><p>お気に入り球団</p></th>  
+  <th><%= attachment_image_tag(user.favorite_team, :image, :fill, 100, 100, fallback: "no_image.jpg") %></th>
+  </tr>
+  <tr>
+	  <th>なまえ</th>
+	  <th><%= simple_format user.nickname %></th>
+  </tr>
+  <tr>
+	  <th>自己紹介</th>
+	  <th><%= simple_format user.introduction %></th>
   </tr>
 </table>
 

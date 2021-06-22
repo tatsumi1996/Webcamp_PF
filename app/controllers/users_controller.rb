@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @favorite_teams = FavoriteTeam.all
     @user = User.find(params[:id])
     if current_user != @user
 		  flash[:notice] = "権限がありません"
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nickname, :introduction, :profile_image)
+    params.require(:user).permit(:nickname, :introduction, :profile_image, :favorite_team_id)
   end
 
   def ensure_correct_user

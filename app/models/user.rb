@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   
-  #belongs_to :favorite_team
+  belongs_to :favorite_team
   
   attribute :is_deleted, :boolean, default: false
   
