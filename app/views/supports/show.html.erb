@@ -15,7 +15,6 @@
             <th>投稿ユーザー</th>
             <th>タイトル</th>
             <th>応援コメント</th>
-            <th colspan="7"></th>
           </tr>
         </thead>
   		  <tr>
@@ -26,29 +25,43 @@
           </td>
           <td><%= link_to @support.title, support_path(@support) %></td>
           <td><%= simple_format @support.body %></td>
+        </tr>
+        <tr>
+          <td colspan="2">作成日時：<%= @support.created_at.to_s(:datetime_jp) %></td>
+          <td>更新日時：<%= @support.updated_at.to_s(:datetime_jp) %></td>
+        </tr>
+        <tr>
           <td>
           <% if current_user.already_liked?(@support) %>
-              <%= link_to support_likes_path(@support), method: :delete do %>
-                <i class="fas fa-heart"></i>
-              <% end %>
-            <% else %>
-              <%= link_to support_likes_path(@support), method: :post do %>
-                <i class="far fa-heart"></i>
-              <% end %>
+            <%= link_to support_likes_path(@support), method: :delete do %>
+              <i class="fas fa-heart"></i>
             <% end %>
-            <%= @support.likes.count %>
+          <% else %>
+            <%= link_to support_likes_path(@support), method: :post do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+          <% end %>
+          <%= @support.likes.count %>
           </td>
 
           <td><p>コメント数：<%= @support.comments.count %></p></td>
               <% if @support.user == current_user %>
-          <td><%= link_to '投稿を編集', edit_support_path(@support), class: "btn btn-sm btn-info edit_support_#{@support.id}" %></td>
-          <td><%= link_to '投稿を削除', support_path(@support), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_support_#{@support.id}"%></td>
+          <td><%= link_to '投稿を編集', edit_support_path(@support), class: "btn btn-sm btn-outline-info edit_support_#{@support.id}" %></td>
+          <td><%= link_to '投稿を削除', support_path(@support), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger destroy_support_#{@support.id}"%></td>
           <% end %>
         </tr>
       </table>
+      <h2 class="head-line title_h2 text-center">コメント一覧</h2>
       <div class="comments">
         <% @comments.each do |comment| %>
           <table class='comment'>
+            <thead>
+              <tr>
+                <th>ユーザー</th>
+                <th>コメント</th>
+                <th>投稿日時</th>
+              </tr>
+            </thead>
             <tr>
               <td>
               <%= link_to user_path(comment.user) do %>
@@ -56,9 +69,10 @@
               <%= comment.user.nickname %>
               <% end %>
               </td>
-              <td><%= comment.body %></td>
+              <td><%= simple_format comment.body %></td>
+              <td><%= comment.created_at.to_s(:datetime_jp) %></td>
               <% if comment.user == current_user %>
-              <td><%= link_to 'コメントを削除', support_comments_path(@support, @comment), method: :delete, class: "btn btn-sm btn-danger"%></td>
+              <td><%= link_to 'コメントを削除', support_comments_path(@support, @comment), method: :delete, class: "btn btn-sm btn-outline-danger"%></td>
               <% end %>
             <% end %>
           </tr>
@@ -68,7 +82,7 @@
       <div class="new-comment">
         <%= form_with(model:[@support, @comment], local: true) do |f| %>
           <%= f.text_area :body, rows:'5' %>
-          <%= f.submit "コメントを投稿", class: 'btn btn-success' %>
+          <%= f.submit "コメントを投稿", class: 'btn btn-outline-success' %>
         <% end %>
       </div>
     </div>

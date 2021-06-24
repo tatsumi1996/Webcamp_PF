@@ -19,8 +19,8 @@
     <%= f.label :tag_list, "タグリスト" %>
     <%= f.text_field :tag_list, value: @support.tag_list.join(','), class: 'form-control support_tag_list' %>
   </div>
-  
+
   <div class="form-group">
-    <%= f.submit "応援を投稿", class: 'btn btn-success' %>
+    <%= f.submit "応援を投稿", class: 'btn btn-outline-success' %>
   </div>
 <% end %>

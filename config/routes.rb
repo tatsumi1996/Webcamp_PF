@@ -29,5 +29,6 @@ devise_for :users, controllers: {
   get 'homes/top'
   get 'homes/about'
   
+  get 'search' => 'supports#search'
   
 end

@@ -1,10 +1,10 @@
 class SupportsController < ApplicationController
 
   def index
-    @supports = Support.all
+    @supports = Support.all.page(params[:page]).per(15)
     @support = Support.new
     if params[:tag_name]
-      @supports = Support.tagged_with("#{params[:tag_name]}")
+      @supports = Support.tagged_with("#{params[:tag_name]}").page(params[:page]).per(15)
     end
   end
 
@@ -14,7 +14,7 @@ class SupportsController < ApplicationController
     if @support.save
       redirect_to support_path(@support), notice: "応援の投稿が完了しました。"
     else
-      @supports = Support.all
+      @supports = Support.all.page(params[:page]).per(15)
       render 'index'
     end
   end
@@ -43,7 +43,14 @@ class SupportsController < ApplicationController
   def destroy
     @support = Support.find(params[:id])
     @support.destroy
-    redirect_to support_path
+    redirect_to supports_path
+  end
+  
+  def search
+    @support = Support.new
+    @supports = Support.search(params[:keyword]).page(params[:page]).per(15)
+    @keyword = params[:keyword]
+    render "index"
   end
 
   private

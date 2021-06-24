@@ -3,12 +3,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @supports = @user.supports
+    @supports = @user.supports.page(params[:page]).per(15)
     @support = Support.new
   end
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(15)
     @support = Support.new
   end
 

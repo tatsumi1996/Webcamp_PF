@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title, "タイトル" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
+    <%= form.label :body, "概要" %>
     <%= form.text_field :body %>
   </div>
 
   <div class="field">
-    <%= form.label :start_date %>
+    <%= form.label :start_date, "開始日時" %>
     <%= form.datetime_select :start_date %>
   </div>
 
   <div class="field">
-    <%= form.label :end_date %>
+    <%= form.label :end_date, "終了日時" %>
     <%= form.datetime_select :end_date %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "追加", class: "btn btn-outline-success" %>
   </div>
 <% end %>
