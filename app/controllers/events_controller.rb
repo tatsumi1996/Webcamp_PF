@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
-  before_action :authenticate_admin!, only: [:new,:edit]
+  before_action :authenticate_admin!, only: [:new,:edit,:destroy]
   skip_before_action :authenticate_user!
 
   # GET /events or /events.json

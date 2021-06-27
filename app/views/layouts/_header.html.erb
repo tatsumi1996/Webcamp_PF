@@ -1,13 +1,17 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c698d9;">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>野球応援シティ</span></a>
+      <a class="navbar-brand" href="#">野球応援シティ</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
+        <% if admin_signed_in? %>
+          <li><%= link_to ' 試合日程', events_path, class: 'fas fa-baseball-ball nav-link text-light' %></li>
+          <li><%= link_to ' お気に入り球団編集', admin_favorite_teams_path, class: 'fas fa-list nav-link text-light' %></li>
+          <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+          <% elsif user_signed_in? %>
           <div class="search-form">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
             <%= f.text_field :keyword, value: @keyword, placeholder: "検索したいワードをここに入力" %>
@@ -19,10 +23,6 @@
           <li><%= link_to ' ユーザ一覧', users_path, class: 'fas fa-users nav-link text-light' %></li>
           <li><%= link_to ' 投稿一覧', supports_path , class: 'fas fa-pen nav-link text-light'%></li>
           <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <% elsif admin_signed_in? %>
-          <li><%= link_to ' 試合日程', events_path, class: 'fas fa-baseball-ball nav-link text-light' %></li>
-          <li><%= link_to ' お気に入り球団編集', admin_favorite_teams_path, class: 'fas fa-list nav-link text-light' %></li>
-          <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
           <% else %>
           <li><%= link_to ' トップ', root_path, class: 'fas fa-home nav-link text-light' %></li>
           <li><%= link_to ' 概要', homes_about_path, class: 'fas fa-globe-asia nav-link text-light' %></li>
