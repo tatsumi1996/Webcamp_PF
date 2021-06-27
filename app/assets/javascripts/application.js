@@ -19,3 +19,10 @@
 //= require turbolinks
 //= require_tree .
 
+/* global $*/
+$(document).on('turbolinks:load', function(){
+ 	$('.bxslider').bxSlider({
+		auto: true,
+		minslides: 3
+	});
+});
