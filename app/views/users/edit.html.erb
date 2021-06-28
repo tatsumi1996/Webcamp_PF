@@ -16,7 +16,7 @@
       </br>
       <div class="form-group">
         <%= f.label :"お気に入り球団", class: "col-sm-10 control-label" %>
-        <%= f.collection_select(:favorite_team_id, @favorite_teams, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 favorite_team_id") %>
+        <%= f.collection_select(:favorite_team_id, FavoriteTeam.all, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 favorite_team_id") %>
       </div>
       </br>
       <div class="form-group">
@@ -25,7 +25,7 @@
       </div>
       </br>
       <div class="form-group">
-        <%= f.submit class: 'btn btn-outline-secondary' %>
+        <%= f.submit "更新", class: 'btn btn-outline-secondary' %>
       </div>
     <% end %>
   </div>
