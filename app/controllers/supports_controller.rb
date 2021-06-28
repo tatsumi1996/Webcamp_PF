@@ -56,7 +56,7 @@ class SupportsController < ApplicationController
   private
 
   def support_params
-    params[:support].permit(:title, :body, :tag_list, :taggings_count)
+    params[:support].permit(:title, :body, :tag_list,)
   end
 
 end
