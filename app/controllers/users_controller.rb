@@ -28,6 +28,10 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+  
+  def quit
+	end
+
 
   private
   def user_params

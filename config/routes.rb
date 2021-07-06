@@ -10,6 +10,13 @@ devise_for :users, controllers: {
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+
+  	resource :users,only: [:show] do
+  		collection do
+  	     get 'quit'
+  	     patch 'out'
+  	  end
+  	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :users, only: [:index,:show,:edit,:update]
