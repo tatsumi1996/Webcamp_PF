@@ -11,12 +11,9 @@ devise_for :users, controllers: {
   registrations: 'users/registrations'
 }
 
-  	resource :users,only: [:show] do
-  		collection do
-  	     get 'quit'
-  	     patch 'out'
-  	  end
-  	end
+  resources :users
+  put "/users/:id/hide" => "users#hide", as: 'users_hide'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :users, only: [:index,:show,:edit,:update]

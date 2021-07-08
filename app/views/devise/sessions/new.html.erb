@@ -1,4 +1,5 @@
 <div class="container">
+  <%= flash[:alert] %>
 <h4>ログイン</h4>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

@@ -24,5 +24,9 @@ class User < ApplicationRecord
   def already_liked?(support)
     self.likes.exists?(support_id: support.id)
   end
+  
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 
 end
