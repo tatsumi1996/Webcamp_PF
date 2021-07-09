@@ -27,6 +27,7 @@ devise_for :users, controllers: {
   
   namespace :admin do
     resources :favorite_teams, only: [:index, :create, :edit, :update]
+    resources :users, only: [:index, :edit, :show, :update]
   end
   
   root to: 'homes#top'
