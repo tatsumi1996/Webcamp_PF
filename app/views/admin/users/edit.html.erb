@@ -1,9 +1,9 @@
 <% provide(:title, "会員情報編集") %>
+<div class="container">
 <div class="row">
   <div calss="col-xs-12">
-    <%= render "layouts/error_messages", resource: @user %>
     <h2 class="head-line title_h2 text-center">
-      <%= nickname(@user) %>さんの会員情報編集
+      <%= @user.nickname %>さんの会員情報編集
     </h2>
 
   <%= form_with(model: @user, url:admin_user_path, local: true ,method: :patch) do |f| %>
@@ -36,4 +36,5 @@
       <%= link_to "戻る", admin_user_path, class: "glyphicon glyphicon-home btn btn-info" %>
     </div>
   </div>
+</div>
 </div>
