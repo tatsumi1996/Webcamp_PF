@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
 	end
 
 	private
-	def customer_params
+	def user_params
 	  params.require(:user).permit(:nickname,:profile_image,:email,:is_deleted)
 	end
 end

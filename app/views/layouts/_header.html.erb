@@ -12,6 +12,7 @@
         <% if admin_signed_in? %>
           <li><%= link_to ' 試合日程', events_path, class: 'fas fa-baseball-ball nav-link text-light' %></li>
           <li><%= link_to ' お気に入り球団編集', admin_favorite_teams_path, class: 'fas fa-list nav-link text-light' %></li>
+          <li><%= link_to 'ユーザ管理', admin_users_path, class: 'fas fa-tasks nav-link text-light' %></li>
           <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
           <% elsif user_signed_in? %>
           <div class="search-form">
