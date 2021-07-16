@@ -83,3 +83,4 @@ gem 'momentjs-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'jquery-turbolinks'
+gem 'rails-i18n', '~> 5.1' 
