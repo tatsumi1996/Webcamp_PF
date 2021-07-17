@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "空になっています。入力してください。"
+            encrypted_password:
+              blank: "空になっています。入力してください。"
