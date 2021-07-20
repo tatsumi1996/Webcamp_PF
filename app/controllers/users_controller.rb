@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
-end
+  end
 
   private
   def user_params
