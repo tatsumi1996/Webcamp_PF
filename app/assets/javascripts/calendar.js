@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function () {
             day: '日'
         },
         // Drag & Drop & Resize
-        editable: true,
+        editable: false,
         //イベントの時間表示を２４時間に
         timeFormat: "HH:mm",
         //イベントの色を変える
