@@ -16,9 +16,12 @@ devise_for :users, controllers: {
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  resources :users, only: [:index,:show,:edit,:update]
-  get '/user/:id/quit' => 'users#quit', as: 'quit'
-  patch '/users/:id/out' => 'users#out', as: 'users_out'
+  resources :users, only: [:index,:show,:edit,:update] do
+  member do
+  get 'quit'
+  patch 'out'
+  end
+  end
   
   resources :supports, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
