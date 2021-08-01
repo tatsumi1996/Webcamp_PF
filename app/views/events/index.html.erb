@@ -10,6 +10,8 @@
 
         <% @events.each do |event| %>
           <div class="card" style="width:15rem;">
+            <image_tag 'card_baseball.jpg' class="card-img" alt="...">
+            <div class="card-img-overlay">
             <div class="card-body">
               <h5 class="card-title"><%= event.title %></h5>
               <h6 class="card-subtitle text-muted"><%= event.body %></h6>
@@ -19,10 +21,11 @@
               <%= link_to '編集', edit_event_path(event), class: "btn btn-outline-info" %>
               <%= link_to '削除', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
             </div>
+            </div>
           </div>
         <% end %>
     <br>
-    
+
     <%= link_to '日程を追加', new_event_path, class: "btn btn-outline-success" %>
 
     <div id="calendar"></div>
