@@ -1,8 +1,17 @@
 ja:
   activerecord:
+  
+      models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      user: ユーザー 
+  
     attributes:
       user:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
+        
+      attributes:
+    created_at: 作成日
+    updated_at: 更新日
