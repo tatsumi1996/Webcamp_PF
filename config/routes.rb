@@ -13,6 +13,7 @@ devise_for :users, controllers: {
 
   resources :users
   put "/users/:id/hide" => "users#hide", as: 'users_hide'
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
