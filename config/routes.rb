@@ -43,4 +43,7 @@ devise_for :users, controllers: {
   
   get 'search' => 'supports#search'
   
+  root to: 'maps#index'
+  resources :maps, only: [:index]
+  
 end
