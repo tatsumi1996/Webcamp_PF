@@ -9,3 +9,6 @@ Admin.find_or_create_by(id: 1) do |admin|
  admin.email = "example@example.com"
  admin.password = "example"
 end
+
+user = User.new(:email => 'dannsamyu@gmail.com', :password => 'superman')
+user.save!
