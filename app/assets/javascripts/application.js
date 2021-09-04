@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function(){
  		oneToOneTouch: true,
  		preventDefaultSwipeX: true,
  		infiniteLoop: true,
+ 		mode: 'fade',
 		auto: true,
 		minslides: 3
 	});
